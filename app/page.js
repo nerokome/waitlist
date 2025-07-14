@@ -1,4 +1,4 @@
-'use client'; // If you're using App Router
+'use client';
 
 import Image from "next/image";
 import { useState } from "react";
@@ -18,7 +18,7 @@ export default function Home() {
     setMessage("");
 
     try {
-       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`,  {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function Home() {
       });
 
       const data = await res.json();
-s
+
       if (res.ok) {
         setMessage("✅ You’ve been added to the waitlist!");
         setEmail("");
@@ -43,9 +43,9 @@ s
   };
 
   return (
-    <div className=" py-10 max-w-7xl mx-auto">
+    <div className="py-10 px-6 sm:px-8 max-w-7xl mx-auto">
       {/* Logo and Title */}
-      <div className="flex  gap-4">
+      <div className="flex gap-4">
         <Image
           src="/g 2.png"
           alt="Logo"
@@ -53,7 +53,7 @@ s
           height={40}
           className="w-10 h-10 rounded-full object-cover"
         />
-        <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600">
+        <p className="text-xl sm:text-2xl md:text-4xl font-bold text-blue-600">
           ScholarGuide Tech
         </p>
       </div>
@@ -63,7 +63,7 @@ s
         {/* Hero Line */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           <div className="mt-2 flex flex-col items-center">
-            <p className="text-3xl sm:text-4xl font-semibold">Explore,</p>
+            <p className="text-2xl sm:text-3xl font-semibold">Explore,</p>
             <Image
               src="/Ellipse 67.png"
               alt="Dot Decoration"
@@ -72,15 +72,15 @@ s
             />
           </div>
 
-          <p className="text-3xl sm:text-4xl font-semibold">
+          <p className="text-2xl sm:text-3xl font-semibold">
             <span className="text-blue-500">Learn</span> and Connect. All
           </p>
         </div>
 
-        <p className="text-3xl sm:text-4xl font-semibold mt-2">at the same time</p>
+        <p className="text-2xl sm:text-3xl font-semibold mt-2">at the same time</p>
 
         {/* Description */}
-        <div className="mt-6 text-base sm:text-lg font-medium max-w-3xl text-gray-700">
+        <div className="mt-6 text-sm sm:text-base font-medium max-w-3xl text-gray-700">
           <p>
             A smarter way to <span className="text-blue-500">learn</span> is coming.
             Join thousands getting early access to interactive,{" "}
@@ -96,12 +96,12 @@ s
           <input
             type="email"
             placeholder="Enter e-mail here"
-            className="flex-1 w-full p-3 rounded-lg shadow-md text-gray-800 placeholder-gray-500 placeholder:italic focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="flex-1 w-full p-3 rounded-lg shadow-md text-gray-800 placeholder-gray-500 placeholder:italic focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <button
-            className="bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 w-full sm:w-auto"
+            className="bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 w-full sm:w-auto text-sm sm:text-base"
             onClick={handleSubscribe}
             disabled={loading}
           >
