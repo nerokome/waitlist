@@ -1,103 +1,119 @@
+'use client'; // If you're using App Router
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      setMessage(" Please enter a valid email.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`,  {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+s
+      if (res.ok) {
+        setMessage("✅ You’ve been added to the waitlist!");
+        setEmail("");
+      } else {
+        setMessage(data?.error || "Something went wrong.");
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className=" py-10 max-w-7xl mx-auto">
+      {/* Logo and Title */}
+      <div className="flex  gap-4">
+        <Image
+          src="/g 2.png"
+          alt="Logo"
+          width={40}
+          height={40}
+          className="w-10 h-10 rounded-full object-cover"
+        />
+        <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600">
+          ScholarGuide Tech
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div className="mt-16 flex flex-col items-center text-center">
+        {/* Hero Line */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+          <div className="mt-2 flex flex-col items-center">
+            <p className="text-3xl sm:text-4xl font-semibold">Explore,</p>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/Ellipse 67.png"
+              alt="Dot Decoration"
+              width={105}
+              height={25}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          <p className="text-3xl sm:text-4xl font-semibold">
+            <span className="text-blue-500">Learn</span> and Connect. All
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <p className="text-3xl sm:text-4xl font-semibold mt-2">at the same time</p>
+
+        {/* Description */}
+        <div className="mt-6 text-base sm:text-lg font-medium max-w-3xl text-gray-700">
+          <p>
+            A smarter way to <span className="text-blue-500">learn</span> is coming.
+            Join thousands getting early access to interactive,{" "}
+            <span className="text-green-600">hassle-free</span> learning with the
+            support of{" "}
+            <span className="text-yellow-500">a robust community</span> — anytime,
+            anywhere.
+          </p>
+        </div>
+
+        {/* Input & Button */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full max-w-lg">
+          <input
+            type="email"
+            placeholder="Enter e-mail here"
+            className="flex-1 w-full p-3 rounded-lg shadow-md text-gray-800 placeholder-gray-500 placeholder:italic focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <button
+            className="bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 w-full sm:w-auto"
+            onClick={handleSubscribe}
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Subscribe"}
+          </button>
+        </div>
+
+        {/* Response Message */}
+        {message && (
+          <p className="mt-4 text-sm font-medium text-green-600">{message}</p>
+        )}
+      </div>
     </div>
   );
 }
