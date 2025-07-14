@@ -114,6 +114,6 @@ export default function Home() {
           <p className="mt-4 text-sm font-medium text-green-600">{message}</p>
         )}
       </div>
-    </div>
-  );
+    </div>
+  );
 }
