@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className="py-10 px-6 sm:px-8 max-w-7xl mx-auto">
+    <div className="py-4 px-6 sm:px-8 max-w-7xl mx-auto">
       {/* Logo and Title */}
       <div className="flex gap-4">
         <Image
@@ -51,9 +51,9 @@ export default function Home() {
           alt="Logo"
           width={40}
           height={40}
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-9 h-9 rounded-full object-cover"
         />
-        <p className="text-xl sm:text-2xl md:text-4xl font-bold text-blue-600">
+        <p className="text-3xl sm:text-2xl md:text-4xl font-bold text-blue-600">
           ScholarGuide Tech
         </p>
       </div>
