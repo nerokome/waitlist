@@ -43,17 +43,17 @@ export default function Home() {
   };
 
   return (
-    <div className="py-4 px-6 sm:px-8 max-w-7xl mx-auto">
+    <div className="py-6 px-6 sm:px-8 max-w-7xl mx-auto">
       {/* Logo and Title */}
-      <div className="flex gap-4">
+      <div className="flex  items-center gap-4">
         <Image
           src="/g 2.png"
           alt="Logo"
           width={40}
           height={40}
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-12 h-12 rounded-full object-cover"
         />
-        <p className="text-xl sm:text-2xl md:text-4xl font-bold text-blue-600">
+        <p className="text-3xl sm:text-3xl md:text-4xl font-bold text-blue-600 text-center sm:text-left">
           ScholarGuide Tech
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function Home() {
         {/* Hero Line */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           <div className="mt-2 flex flex-col items-center">
-            <p className="text-2xl sm:text-3xl font-semibold">Explore,</p>
+            <p className="text-3xl sm:text-3xl md:text-4xl font-semibold">Explore,</p>
             <Image
               src="/Ellipse 67.png"
               alt="Dot Decoration"
@@ -72,15 +72,17 @@ export default function Home() {
             />
           </div>
 
-          <p className="text-2xl sm:text-3xl font-semibold">
+          <p className="text-3xl sm:text-3xl md:text-4xl font-semibold">
             <span className="text-blue-500">Learn</span> and Connect. All
           </p>
         </div>
 
-        <p className="text-2xl sm:text-3xl font-semibold mt-2">at the same time</p>
+        <p className="text-3xl sm:text-3xl md:text-4xl font-semibold mt-2">
+          at the same time
+        </p>
 
         {/* Description */}
-        <div className="mt-6 text-sm sm:text-base font-medium max-w-3xl text-gray-700">
+        <div className="mt-6 text-lg sm:text-lg md:text-xl font-medium max-w-3xl text-gray-700">
           <p>
             A smarter way to <span className="text-blue-500">learn</span> is coming.
             Join thousands getting early access to interactive,{" "}
@@ -96,12 +98,12 @@ export default function Home() {
           <input
             type="email"
             placeholder="Enter e-mail here"
-            className="flex-1 w-full p-3 rounded-lg shadow-md text-gray-800 placeholder-gray-500 placeholder:italic focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base"
+            className="flex-1 w-full p-4 rounded-lg shadow-md text-gray-800 placeholder-gray-500 placeholder:italic focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-lg"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <button
-            className="bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 w-full sm:w-auto text-sm sm:text-base"
+            className="bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 w-full sm:w-auto text-base sm:text-lg"
             onClick={handleSubscribe}
             disabled={loading}
           >
@@ -111,9 +113,11 @@ export default function Home() {
 
         {/* Response Message */}
         {message && (
-          <p className="mt-4 text-sm font-medium text-green-600">{message}</p>
+          <p className="mt-4 text-base sm:text-lg font-medium text-green-600">
+            {message}
+          </p>
         )}
       </div>
-    </div>
-  );
+    </div>
+  );
 }
