@@ -63,7 +63,7 @@ export default function Home() {
         {/* Hero Line */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           <div className="mt-2 flex flex-col items-center">
-            <p className="text-3xl sm:text-3xl md:text-4xl font-semibold">Explore,</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold">Explore,</p>
             <Image
               src="/Ellipse 67.png"
               alt="Dot Decoration"
@@ -72,12 +72,12 @@ export default function Home() {
             />
           </div>
 
-          <p className="text-3xl sm:text-3xl md:text-4xl font-semibold">
+          <p className="text-2xl sm:text-3xl md:text-4xl font-semibold">
             <span className="text-blue-500">Learn</span> and Connect. All
           </p>
         </div>
 
-        <p className="text-3xl sm:text-3xl md:text-4xl font-semibold mt-2">
+        <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mt-2">
           at the same time
         </p>
 
